@@ -1,11 +1,14 @@
 import {PropsWithChildren} from "react";
-import {Stack} from "@/components/stack";
+import {NavLink} from "react-router";
+import {Button} from "@/components/button";
 import {Spacer} from "@/components/spacer";
-import {Link} from "react-router";
+import {Stack} from "@/components/stack";
 
 type Props = {
   links?: ({
     path: string;
+    click?: () => void;
+    disabled?: boolean;
     body?: PropsWithChildren['children'];
   } | 'spacer')[];
 };
@@ -18,7 +21,17 @@ export function NavBar(props: Props) {
           if (link === 'spacer') {
             return <Spacer/>;
           } else {
-            return <Link to={link.path}>{link.body}</Link>;
+            return <NavLink
+              to={link.path}
+              onClick={link.click}
+              style={{
+                textDecorationLine: 'none'
+              }}
+            >
+              <Button disabled={link.disabled}>
+                {link.body}
+              </Button>
+            </NavLink>;
           }
         })
       }

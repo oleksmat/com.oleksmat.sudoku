@@ -1,10 +1,19 @@
-import {Link} from "react-router";
+import {NavBar} from "@/components/nav-bar";
 
 export function InputPage() {
   return <>
-    <nav>
-      <Link to="/">Home</Link>
-    </nav>
+    <NavBar links={[
+      {
+        path: '/',
+        body: 'Home'
+      },
+      'spacer',
+      {
+        path: '/',
+        disabled: true,
+        body: 'Submit'
+      },
+    ]}/>
     <main>
       Hello, World! Input
     </main>
