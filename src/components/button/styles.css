@@ -1,0 +1,15 @@
+.button {
+    display: flex;
+
+    font-size: 1.5em;
+
+    padding: 0.5em;
+
+    appearance: none;
+
+    border: none;
+    color: black;
+
+    justify-content: center;
+    align-items: center;
+}

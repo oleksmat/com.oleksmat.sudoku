@@ -1,17 +1,14 @@
 import {PropsWithChildren} from "react";
+import './styles.css';
 
 type Props = PropsWithChildren<{
+  onClick?: () => void;
+
   disabled?: boolean;
 }>;
 
 export function Button(props: Props) {
-  return <button style={{
-    display: 'block',
-    fontSize: '1.5em',
-    padding: '0.5em',
-    appearance: 'none',
-    border: 'none',
-  }} disabled={props.disabled}>
+  return <button className={"button"} disabled={props.disabled} onClick={props.onClick}>
     {props.children}
   </button>;
 }

@@ -13,7 +13,7 @@ type Props = {
   } | 'spacer')[];
 };
 
-export function NavBar(props: Props) {
+export function Navbar(props: Props) {
   return <nav>
     <Stack>
       {
