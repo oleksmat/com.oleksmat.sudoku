@@ -1,12 +1,12 @@
 import {Link} from "react-router";
-import {NavBar} from "@/components/nav-bar";
+import {Navbar} from "src/components/navbar";
 import {useDialog} from "@/contexts/dialog";
 
 export function HomePage() {
   const { openDialog } = useDialog();
 
   return <>
-    <NavBar links={[
+    <Navbar links={[
       'spacer',
       {
         path: '/sudoku',
@@ -18,11 +18,6 @@ export function HomePage() {
       <ul>
         <Link to="/sudoku/abc">Solver</Link>
       </ul>
-      <button onClick={() => openDialog({
-        children: <button>
-          Kek
-        </button>,
-      })}>Open</button>
     </main>
   </>;
 }

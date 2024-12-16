@@ -1,11 +1,11 @@
 import {useParams} from "react-router";
-import {NavBar} from "@/components/nav-bar";
+import {Navbar} from "src/components/navbar";
 
 export function SolverPage() {
   const { sudokuId } = useParams<{ sudokuId: string }>();
 
   return <>
-    <NavBar links={[
+    <Navbar links={[
       {
         path: '/',
         body: 'Home'
