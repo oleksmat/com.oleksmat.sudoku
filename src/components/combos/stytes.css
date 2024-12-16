@@ -1,0 +1,27 @@
+.combos {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(21, 3vmin);
+    grid-template-rows: repeat(33, 3vmin);
+    column-gap: 5px;
+    row-gap: 5px;
+}
+
+.combos > div {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: lightgrey;
+    font-size: 0.8em;
+}
+
+.combos > div.skip {
+    background-color: transparent;
+}
+
+body {
+    margin: 0;
+}

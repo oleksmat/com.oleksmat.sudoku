@@ -1,6 +1,7 @@
 import {PropsWithChildren, useRef, useState, MouseEvent} from "react";
 import {Dialog} from "@/components/dialog";
 import {DialogData} from "./dialog-data";
+import {DialogInit} from "./dialog-init";
 import {DialogContext} from "./dialog-context";
 
 type Props = PropsWithChildren;
@@ -27,7 +28,7 @@ export function DialogProvider(props: Props) {
     }
   }
 
-  function openDialog(props: DialogData) {
+  function openDialog(props: DialogInit) {
     const dialog = dialogRef.current;
 
     if (!dialog) {
@@ -38,9 +39,13 @@ export function DialogProvider(props: Props) {
       dialogData.closed();
     }
 
-    setDialogData(props);
+    const data = props({
+      close: () => dialog.close()
+    });
 
-    if (props.nonModal) {
+    setDialogData(data);
+
+    if (data.nonModal) {
       dialog.show();
     } else {
       dialog.showModal();

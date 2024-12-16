@@ -1,6 +1,6 @@
 import {createContext} from "react";
-import {DialogData} from "@/contexts/dialog/dialog-data.ts";
+import {DialogInit} from "./dialog-init.ts";
 
 export const DialogContext = createContext<null | {
-  openDialog(props: DialogData): void;
+  openDialog(props: DialogInit): void;
 }>(null);

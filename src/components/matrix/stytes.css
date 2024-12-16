@@ -1,0 +1,18 @@
+.matrix {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(9, 8vmin);
+    grid-template-rows: repeat(9, 8vmin);
+    column-gap: 5px;
+    row-gap: 5px;
+}
+
+.matrix > div {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: lightgrey;
+}
