@@ -1,4 +1,4 @@
-import {BasicSudokuVal} from "./basic-sudoku-val.ts";
+import {SudokuVal} from "@/data/types";
 
 const TO_STRING_LINE = new Array(9).fill('-').join('+');
 
@@ -32,7 +32,7 @@ export const BasicSudokuUtils = {
 
     return row * 9 + col;
   },
-  toString(data: (BasicSudokuVal | null)[]) {
+  toString(data: (SudokuVal | null)[]) {
     let result = TO_STRING_LINE;
 
     for (let i = 0; i < 9; i++) {

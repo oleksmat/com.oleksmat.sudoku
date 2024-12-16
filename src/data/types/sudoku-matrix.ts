@@ -1,15 +1,19 @@
 import {SudokuVal} from "./sudoku-val";
 
-export interface SudokuMatrix<Value extends SudokuVal> {
-  getVal(cellId: string): Value | null;
+export interface SudokuMatrix {
+  getVal(cellId: string): SudokuVal | null;
 
-  setVal(cellId: string, value: Value | null): void;
+  setVal(cellId: string, value: SudokuVal | null): void;
 
   listCells(groupId?: string): string[];
 
   listGroups(cellId?: string): string[];
 
-  copy(): SudokuMatrix<Value>;
+  copy(): SudokuMatrix;
+
+  empty(): boolean;
+
+  vals(): SudokuVal[];
 
   [Symbol.toStringTag](): string;
 }

@@ -1,22 +1,23 @@
-import {SudokuMatrix} from "../types";
-import {BasicSudokuVal} from "./basic-sudoku-val";
+import {SudokuMatrix, SudokuVal} from "@/data/types";
 import {BasicSudokuUtils} from "./basic-sudoku-utils";
 
 // CELL ID: [1-9]x[1-9]
 // GROUP ID: [RCB]:[1-9]
 
-export class BasicSudokuMatrix implements SudokuMatrix<BasicSudokuVal> {
-  private readonly data: (BasicSudokuVal | null)[];
+const VALS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-  constructor(data?: (BasicSudokuVal | null)[]) {
-    this.data = data ? new Array(data) : new Array(81).fill(null);
+export class BasicSudokuMatrix implements SudokuMatrix {
+  private readonly data: (SudokuVal | null)[];
+
+  constructor(data?: (SudokuVal | null)[]) {
+    this.data = data ? data.map((val) => val) : new Array(81).fill(null);
   }
 
-  getVal(cellId: string): BasicSudokuVal | null {
+  getVal(cellId: string): SudokuVal | null {
     return this.data[BasicSudokuUtils.parseCellId(cellId)];
   }
 
-  setVal(cellId: string, value: BasicSudokuVal | null): void {
+  setVal(cellId: string, value: SudokuVal | null): void {
     this.data[BasicSudokuUtils.parseCellId(cellId)] = value;
   }
 
@@ -75,8 +76,16 @@ export class BasicSudokuMatrix implements SudokuMatrix<BasicSudokuVal> {
     return [`r:${row}`, `c:${col}`, `b:${boxRow + boxCol}`]
   }
 
-  copy(): SudokuMatrix<BasicSudokuVal> {
+  copy(): BasicSudokuMatrix {
     return new BasicSudokuMatrix(this.data);
+  }
+
+  empty(): boolean {
+    return this.data.reduce((result, val) => (result && !val), true);
+  }
+
+  vals() {
+    return VALS;
   }
 
   [Symbol.toStringTag](): string {
